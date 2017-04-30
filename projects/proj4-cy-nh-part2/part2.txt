@@ -1,0 +1,39 @@
+* Note that an ec2.x8large instance costs $1.680 / hour.
+
+1. Fill in the table from 5 slaves.
+Benchmark      | # of Images | Total Runtime(min) | Training Performance(imgs/sec) | $ / 50000 imgs
+----------------------------------------------------------------------------------------------------
+ec2-cnn-large  |    8000     |       16.63        |             27.46              |     4.2486
+ec2-cnn-huge   |   20000     |       32.00        |             32.90              |     3.5461
+ec2-cnn-full   |   50000     |       81.69        |             31.23              |     3.7357
+
+2. Fill in the table from 10 slaves.
+Benchmark      | # of Images | Total Runtime(min) | Training Performance(imgs/sec) | $ / 50000 imgs
+----------------------------------------------------------------------------------------------------
+ec2-cnn-large  |    8000     |       12.59        |             37.81              |     6.1712
+ec2-cnn-huge   |   20000     |       20.36        |             53.09              |     4.3951
+ec2-cnn-full   |   50000     |       47.20        |             54.73              |     4.2634
+
+3. What is the speed-up of 10 slaves over 5 slaves? What can you conclude on the data size and parallelism? 
+Is this a case of strong scaling or weak scaling?
+Benchmark      | # of Images |      speed-up      |
+---------------------------------------------------
+ec2-cnn-large  |    8000     |       1.377        |
+ec2-cnn-huge   |   20000     |       1.614        |
+ec2-cnn-full   |   50000     |       1.752        |
+
+We observe a strong scaling effect because there was a speedup observed when going from 5 to 10 instances (we know this because the speedup ratio is greater than 1, which means the addition of processing units without addition to problem size did have a speedup effect).
+
+In addition, we observe a weak scaling effect because the speedup achieved increases as the problem size increases (The speedup ratios are greater for larger problem sets).
+
+4. How many dollars in EC2 credits did you use to complete this project?
+large-5:   $2.328
+huge-5:    $4.480
+full-5:   $11.437
+large-10:  $3.525
+huge-10:   $5.701
+full-10:  $13.216
++________________
+total:    $40.687
+
+If we factor in an approximate setup/ending time for all of the instances (time when the instances were idle for both runs) of 10 minutes, then we would add (10min/60min)*$1.68*(10+5) = $4.20 to the total found above (we are unsure if this should be counted in our solution, but it is a factor in reality).

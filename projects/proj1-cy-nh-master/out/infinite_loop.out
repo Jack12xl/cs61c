@@ -1,0 +1,7 @@
+.text
+1000ffff
+
+.symbol
+0	infinite_loop
+
+.relocation

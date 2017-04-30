@@ -1,0 +1,22 @@
+.text
+240b0005
+10000001
+08000000
+256b0002
+240c0036
+016c082a
+1420fffa
+018b082a
+14200000
+08000000
+
+.symbol
+0	start
+4	crazy
+8	just_kidding
+12	so_crazy
+36	craziness_over
+
+.relocation
+8	start
+36	just_kidding

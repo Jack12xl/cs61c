@@ -1,0 +1,10 @@
+addiu $t3 $0 5
+beq $0 $0 so_crazy
+j start
+addiu $t3 $t3 2
+addiu $t4 $0 54
+slt $at $t3 $t4
+bne $at $0 crazy
+slt $at $t4 $t3
+bne $at $0 craziness_over
+j just_kidding
