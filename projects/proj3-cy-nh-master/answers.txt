@@ -1,5 +1,7 @@
 QUESTION 1:
-Extend your cnn.c implementation to output the total amount of time spent in each of the layers of the Convolutional Neural Network. Run make-benchmark and write down the time spent in each layer in answers.txt, both as absolute time in ms and percentage of the total execution time. (Hint: we provide a function timestamp_us() that may be useful).
+Extend your cnn.c implementation to output the total amount of time spent in each of the layers of the Convolutional Neural
+Network. Run make-benchmark and write down the time spent in each layer in answers.txt, both as absolute time in ms and
+percentage of the total execution time. (Hint: we provide a function timestamp_us() that may be useful).
 
 LAYER 0 (conv)     : 4054.825 ms /  42.548 %
 LAYER 1 (relu)     :   38.809 ms /   0.407 %
@@ -14,7 +16,8 @@ LAYER 9 (fc)       :    6.589 ms /   0.069 %
 LAYER 10 (softmax) :    0.869 ms /   0.009 %
 
 QUESTION 2:
-Now, compute the percentage of time spent in each type of layer (e.g., conv or relu). What type of layer is taking up the largest fraction of runtime? Which one is taking up the smallest fraction?
+Now, compute the percentage of time spent in each type of layer (e.g., conv or relu). What type of layer is taking up the
+largest fraction of runtime? Which one is taking up the smallest fraction?
 
 conv:   97.854 %
 relu:    0.716 %
@@ -26,7 +29,8 @@ largest fraction:  conv
 smallest fraction: softmax
 
 QUESTION 3:
-For each of the different types of layer, use Amdahl's Law to compute the overall speed-up if were able to make that type of layer 4x faster. Based on this computation, which layer should we focus our optimization efforts on?
+For each of the different types of layer, use Amdahl's Law to compute the overall speed-up if were able to make that type of
+layer 4x faster. Based on this computation, which layer should we focus our optimization efforts on?
 
 conv:    3.7580563 x
 relu:    1.0053990 x
