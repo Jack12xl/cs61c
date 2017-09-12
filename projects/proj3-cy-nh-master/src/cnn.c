@@ -183,6 +183,7 @@ conv_layer_t* make_conv_layer(int in_sx, int in_sy, int in_depth,
   return l;
 }
 
+// Used a lot of loop unrolling here to eliminate extra jump and branch instructions
 void conv_forward(conv_layer_t* l, vol_t** in, vol_t** out, int start, int end) {
   int x, y;
   int ox, oy;
@@ -196,6 +197,8 @@ void conv_forward(conv_layer_t* l, vol_t** in, vol_t** out, int start, int end) 
   vol_t* A;
   int A_depth, A_sx;
   vol_t* f;
+  
+  // Using Microsoft SIMD instructions here to perform four operations in parallel
   __m256d next_v;
   __m256d next_f;
   __m256d return_v;
@@ -953,6 +956,7 @@ void net_forward(network_t* net, batch_t* v, int start, int end) {
 #define CAT_LABEL 3
 
 void net_classify_cats(network_t* net, vol_t** input, double* output, int n) {
+  // Used OpenMP here to parallelize computation - leading to a 4x speed up 
   #pragma omp parallel
   {
     batch_t* batch = make_batch(net, 8);
